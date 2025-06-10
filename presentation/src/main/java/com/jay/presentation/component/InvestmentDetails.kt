@@ -32,7 +32,6 @@ fun InvestmentDetails(
     percentageChange: Double = 0.0,
     onPnLClicked: () -> Unit = {}
 ) {
-    Log.d("JAY","Value2222 = "+value+"shouldSetPnlColor = "+shouldSetPnlColor)
     var rotateIcon by remember {
         mutableFloatStateOf(0F)
     }

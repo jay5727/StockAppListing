@@ -14,7 +14,12 @@ class GetHoldingsUseCase(
         return repository.getHoldings().map { result ->
             result.fold(
                 onSuccess = { list ->
-                    runCatching { mapper.map(list) }
+                    try {
+                        val mapped = mapper.map(list)
+                        Result.success(mapped)
+                    } catch (e: Exception) {
+                        Result.failure(e)
+                    }
                 },
                 onFailure = { throwable ->
                     Result.failure(throwable)
@@ -22,4 +27,5 @@ class GetHoldingsUseCase(
             )
         }
     }
+
 }
