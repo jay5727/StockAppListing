@@ -1,6 +1,5 @@
-package com.jay.stockapplisting.ui.theme
+package com.jay.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

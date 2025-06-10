@@ -1,4 +1,4 @@
-package com.jay.stockapplisting.ui.theme
+package com.jay.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

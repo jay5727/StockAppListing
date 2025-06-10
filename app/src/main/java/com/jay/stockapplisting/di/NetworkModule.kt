@@ -1,6 +1,7 @@
 package com.jay.stockapplisting.di
 
 import com.google.gson.GsonBuilder
+import com.jay.data.network.HoldingApiService
 import com.jay.stockapplisting.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -44,4 +45,13 @@ object NetworkModule {
             .addConverterFactory(gsonConverter)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideHoldingApiService(
+        retrofit: Retrofit
+    ): HoldingApiService {
+        return retrofit.create(HoldingApiService::class.java)
+    }
+
 }

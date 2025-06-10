@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.3"
+agp = "8.9.1"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -16,7 +16,8 @@ retrofit = "2.11.0"
 gson = "2.10.1"
 room = "2.7.1"
 hiltNavigation = "1.2.0"
-
+javaxInject = "1"
+javaxAnnotation = "1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,7 +48,8 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
-
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
+javax-annotation = { module = "javax.annotation:jsr250-api", version.ref = "javaxAnnotation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
