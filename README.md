@@ -18,6 +18,14 @@ A modern Android application built with **Jetpack Compose**, **MVVM**, and **Cle
 | ![Image](https://github.com/user-attachments/assets/96169cb7-8019-4aee-bbc0-44acbf3afc48) | ![Image](https://github.com/user-attachments/assets/eeefeaa4-d40c-403e-be94-6b580d82a7da) |
 ---
 
+## 🚀 Test Case Coverage
+
+✅ Includes complete **JUnit** & **Jetpack Compose UI tests** with full screen validation!  
+<img width="560" alt="Image" src="https://github.com/user-attachments/assets/0728ffe2-9558-4c0e-ae07-1794e452b390" />
+
+![Image](https://github.com/user-attachments/assets/e86d50b8-623b-44bb-a8e1-de41e8b1f368)
+
+
 ## 🚀 Features
 
 - 📊 Holdings list with LTP and P&L display
