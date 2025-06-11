@@ -5,17 +5,15 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class DatabaseServiceImplTest {
 
     private val dao: HoldingDao = mockk(relaxed = true)
-    private lateinit var dbService: DatabaseServiceImpl
+    private lateinit var dbService: DatabaseService
 
     @Before
     fun setup() {

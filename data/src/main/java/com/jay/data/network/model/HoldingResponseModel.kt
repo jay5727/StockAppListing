@@ -1,4 +1,4 @@
-package com.jay.data.model
+package com.jay.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

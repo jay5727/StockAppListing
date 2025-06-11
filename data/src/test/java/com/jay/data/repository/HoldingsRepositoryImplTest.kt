@@ -2,8 +2,8 @@ package com.jay.data.repository
 
 import com.jay.data.database.DatabaseService
 import com.jay.data.database.HoldingEntity
-import com.jay.data.model.HoldingDto
-import com.jay.data.model.HoldingResponseModel
+import com.jay.data.network.model.HoldingDto
+import com.jay.data.network.model.HoldingResponseModel
 import com.jay.data.network.HoldingApiService
 import com.jay.domain.repository.HoldingsRepository
 import com.jay.presentation.utils.MainDispatcherRule
@@ -27,7 +27,6 @@ import org.junit.runners.JUnit4
 import java.io.IOException
 
 @RunWith(JUnit4::class)
-@OptIn(ExperimentalCoroutinesApi::class)
 class HoldingsRepositoryImplTest {
 
 
