@@ -20,15 +20,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jay.domain.util.StringConstants.CurrentValue
+import com.jay.domain.util.getFormattedString
+import com.jay.presentation.model.InvestmentDataItem
 
 @Composable
 fun InvestmentDetails(
     modifier: Modifier = Modifier,
-    pair: Pair<String, String>,
+    item: InvestmentDataItem,
     shouldShowIcon: Boolean = false,
-    shouldSetPnlColor: Boolean = false,
-    value: Double,
-    percentageChange: Double = 0.0,
     onPnLClicked: () -> Unit = {}
 ) {
     var rotateIcon by remember {
@@ -38,7 +38,7 @@ fun InvestmentDetails(
         modifier = modifier,
         verticalAlignment = CenterVertically
     ) {
-        Text(text = pair.first)
+        Text(text = item.label)
         if (shouldShowIcon) {
             Icon(
                 modifier = Modifier
@@ -54,8 +54,8 @@ fun InvestmentDetails(
         Spacer(modifier = Modifier.weight(1F))
         val textWithColors = mutableListOf(
             Pair(
-                first = pair.second,
-                second = if (shouldSetPnlColor) ColorComposable(value = value) else Color.Black
+                first = item.value,
+                second = if (item.showPnlColor) ColorComposable(value = item.amount) else Color.Black
             )
         )
         if (shouldShowIcon) {
@@ -63,10 +63,10 @@ fun InvestmentDetails(
                 Pair(
                     first = buildString {
                         append("(")
-                        append(percentageChange.toString())
+                        append(item.percentageChange.toString())
                         append("%)")
                     },
-                    second = if (shouldSetPnlColor) ColorComposable(value = percentageChange) else Color.Black
+                    second = if (item.showPnlColor) ColorComposable(value = item.amount) else Color.Black
                 )
             )
         }
@@ -79,11 +79,7 @@ fun InvestmentDetails(
 private fun InvestmentDetailsPreview() {
     InvestmentDetails(
         modifier = Modifier.fillMaxWidth(),
-        pair = Pair("Current Value", "27,893"),
-        shouldShowIcon = false,
-        shouldSetPnlColor = false,
-        value = 25.0,
-        percentageChange = 0.0,
+        item = InvestmentDataItem(CurrentValue, 5727.0.getFormattedString()),
         onPnLClicked = {}
     )
 }

@@ -47,14 +47,16 @@ class HoldingsViewModelTest {
     @Test
     fun `uiState should emit Success when use case returns data`() = runTest {
         // Given
+
+        val holdingList = listOf(Holding("ITC", 10, 100.0, 95.0, 98.0))
         val domain = HoldingSummary(
-            holdingsList = listOf(Holding("ITC", 10, 100.0, 95.0, 98.0)),
+            holdingsList = holdingList,
             investmentInfo = InvestmentInfo()
         )
         val holdingSummaryUI = HoldingSummaryUI(
             holdingList = listOf(
                 HoldingUIModel(
-                    holding = Holding("ITC", 10, 100.0, 95.0, 98.0),
+                    holding = domain.holdingsList.first(),
                     individualStockPNL = 5727.0,
                     formattedLTP = "98.0",
                     formattedPNL = "5727.0"

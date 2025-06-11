@@ -32,6 +32,7 @@ import com.jay.domain.util.StringConstants.PNL
 import com.jay.domain.util.StringConstants.TodaysPL
 import com.jay.domain.util.StringConstants.TotalInvestment
 import com.jay.domain.util.getFormattedString
+import com.jay.presentation.model.InvestmentDataItem
 import com.jay.presentation.theme.LightGrey
 
 @Composable
@@ -42,15 +43,28 @@ fun ProfitLossBottomSheetInfo(
     var showInfoSheet by remember {
         mutableStateOf(false)
     }
-    val totalPNL = detailInfo.totalPNL
-    val todaysPNL = detailInfo.todaysPNL
-    val percentageChange = detailInfo.percentageChange
 
     val list = listOf(
-        Pair(CurrentValue, detailInfo.currentValue.getFormattedString()),
-        Pair(TotalInvestment, detailInfo.totalInvestment.getFormattedString()),
-        Pair(TodaysPL, detailInfo.todaysPNL.getFormattedString()),
-        Pair(PNL, detailInfo.totalPNL.getFormattedString())
+        InvestmentDataItem(
+            label = CurrentValue,
+            value = detailInfo.currentValue.getFormattedString()
+        ),
+        InvestmentDataItem(
+            label = TotalInvestment,
+            value = detailInfo.totalInvestment.getFormattedString()
+        ),
+        InvestmentDataItem(
+            label = TodaysPL,
+            value = detailInfo.todaysPNL.getFormattedString(),
+            amount = detailInfo.todaysPNL, showPnlColor = true
+        ),
+        InvestmentDataItem(
+            label = PNL,
+            value = detailInfo.totalPNL.getFormattedString(),
+            amount = detailInfo.totalPNL,
+            percentageChange = detailInfo.percentageChange,
+            showPnlColor = true
+        )
     )
 
     Card(
@@ -70,12 +84,10 @@ fun ProfitLossBottomSheetInfo(
                 exit = fadeOut(animationSpec = tween(durationMillis = 300)) + shrinkVertically()
             ) {
                 Column {
-                    list.dropLast(1).forEachIndexed { index, it ->
+                    list.dropLast(1).forEach { it ->
                         InvestmentDetails(
                             modifier = Modifier.padding(8.dp),
-                            pair = it,
-                            shouldSetPnlColor = index == list.lastIndex - 1,
-                            value = todaysPNL
+                            item = it
                         )
                     }
                     Spacer(
@@ -91,11 +103,8 @@ fun ProfitLossBottomSheetInfo(
             //Profit & Loss
             InvestmentDetails(
                 modifier = Modifier.padding(8.dp),
-                pair = list.last(),
+                item = list.last(),
                 shouldShowIcon = true,
-                shouldSetPnlColor = true,
-                value = totalPNL,
-                percentageChange = percentageChange
             ) {
                 showInfoSheet = !showInfoSheet
             }

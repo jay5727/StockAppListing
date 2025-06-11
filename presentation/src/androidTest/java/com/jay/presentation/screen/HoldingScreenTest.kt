@@ -11,12 +11,15 @@ import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jay.domain.model.Holding
 import com.jay.domain.model.InvestmentInfo
+import com.jay.domain.util.StringConstants.CurrentValue
+import com.jay.domain.util.getFormattedString
 import com.jay.presentation.component.InvestmentDetails
 import com.jay.presentation.component.NoDataScreen
 import com.jay.presentation.component.ProfitLossBottomSheetInfo
 import com.jay.presentation.component.StockItem
 import com.jay.presentation.model.HoldingSummaryUI
 import com.jay.presentation.model.HoldingUIModel
+import com.jay.presentation.model.InvestmentDataItem
 import com.jay.presentation.state.HoldingScreenUiState
 import org.junit.Rule
 import org.junit.Test
@@ -152,11 +155,11 @@ class HoldingScreenTest {
 
         composeTestRule.setContent {
             InvestmentDetails(
-                pair = "P&L" to "+₹5000",
+                item = InvestmentDataItem(
+                    CurrentValue,
+                    investmentInfo.currentValue.getFormattedString()
+                ),
                 shouldShowIcon = true,
-                shouldSetPnlColor = true,
-                value = 5000.0,
-                percentageChange = 10.0,
                 onPnLClicked = { clicked = true }
             )
         }
