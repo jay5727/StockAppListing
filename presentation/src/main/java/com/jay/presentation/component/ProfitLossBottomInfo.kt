@@ -12,10 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,7 +39,6 @@ fun ProfitLossBottomSheetInfo(
     var showInfoSheet by remember {
         mutableStateOf(false)
     }
-
     val list = listOf(
         InvestmentDataItem(
             label = CurrentValue,
@@ -66,48 +61,37 @@ fun ProfitLossBottomSheetInfo(
             showPnlColor = true
         )
     )
-
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-        shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 8.dp
-        )
-    ) {
-        Column(modifier = modifier.padding(8.dp)) {
-            AnimatedVisibility(
-                modifier = Modifier.testTag("expanded_sheet"),
-                visible = showInfoSheet,
-                enter = fadeIn(animationSpec = tween(durationMillis = 300)) + expandVertically(),
-                exit = fadeOut(animationSpec = tween(durationMillis = 300)) + shrinkVertically()
-            ) {
-                Column {
-                    list.dropLast(1).forEach { it ->
-                        InvestmentDetails(
-                            modifier = Modifier.padding(8.dp),
-                            item = it
-                        )
-                    }
-                    Spacer(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth()
-                            .height(1.dp)
-                            .background(Color.Gray)
+    Column(modifier = modifier.padding(8.dp)) {
+        AnimatedVisibility(
+            modifier = Modifier.testTag("expanded_sheet"),
+            visible = showInfoSheet,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300)) + expandVertically(),
+            exit = fadeOut(animationSpec = tween(durationMillis = 300)) + shrinkVertically()
+        ) {
+            Column {
+                list.dropLast(1).forEach { it ->
+                    InvestmentDetails(
+                        modifier = Modifier.padding(8.dp),
+                        item = it
                     )
                 }
+                Spacer(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(Color.Gray)
+                )
             }
+        }
 
-            //Profit & Loss
-            InvestmentDetails(
-                modifier = Modifier.padding(8.dp),
-                item = list.last(),
-                shouldShowIcon = true,
-            ) {
-                showInfoSheet = !showInfoSheet
-            }
+        //Profit & Loss
+        InvestmentDetails(
+            modifier = Modifier.padding(8.dp),
+            item = list.last(),
+            shouldShowIcon = true,
+        ) {
+            showInfoSheet = !showInfoSheet
         }
     }
 }

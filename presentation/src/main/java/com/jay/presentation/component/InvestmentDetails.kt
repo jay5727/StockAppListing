@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -55,7 +56,7 @@ fun InvestmentDetails(
         val textWithColors = mutableListOf(
             Pair(
                 first = item.value,
-                second = if (item.showPnlColor) ColorComposable(value = item.amount) else Color.Black
+                second = if (item.showPnlColor) ColorComposable(value = item.amount) else MaterialTheme.colorScheme.onSurface
             )
         )
         if (shouldShowIcon) {
@@ -66,7 +67,7 @@ fun InvestmentDetails(
                         append(item.percentageChange.toString())
                         append("%)")
                     },
-                    second = if (item.showPnlColor) ColorComposable(value = item.amount) else Color.Black
+                    second = if (item.showPnlColor) ColorComposable(value = item.amount) else MaterialTheme.colorScheme.onSurface
                 )
             )
         }

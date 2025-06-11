@@ -29,7 +29,6 @@ import java.io.IOException
 @RunWith(JUnit4::class)
 class HoldingsRepositoryImplTest {
 
-
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
