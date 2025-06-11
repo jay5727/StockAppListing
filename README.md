@@ -1,15 +1,21 @@
-# 📈 StockListing App
+# 📈 StockListing App 🔥🔥🔥🔥🔥
 
 A modern Android application built with **Jetpack Compose**, **MVVM**, and **Clean Architecture** that displays a user's stock holdings. This app fetches data from a remote source, caches it in a local Room database, and supports **offline access**.  
 
 ✅ **Fully tested** — Unit tests, UI tests, and database tests are all covered.
 
 # 📷 Screenshots
-![Image](https://github.com/user-attachments/assets/0828b4d3-5e0a-45cc-a37b-bb6a806eac34)
+| Screenshot 1 | Screenshot 2 |
+|--------------|--------------|
+| ![Image](https://github.com/user-attachments/assets/ab996f1f-b8d6-493d-98d4-e450082c1a47) | ![Image](https://github.com/user-attachments/assets/f4209dd8-1e7e-4a52-8327-83707344e74c) |
 
-![Image](https://github.com/user-attachments/assets/01edc7ed-cb0c-4b1c-bc42-7ec1983fcc3d)
+| Screenshot 3 | Screenshot 4 |
+|--------------|--------------|
+| ![Image](https://github.com/user-attachments/assets/84db1d18-5a8d-400f-a67a-5f21d454c810) | ![Image](https://github.com/user-attachments/assets/299fc562-bd72-462d-8ae6-133b6ea13fd2) |
 
-![Image](https://github.com/user-attachments/assets/94fc62e8-8441-4bbf-93e4-2eb5aac5bf8d)
+| Screenshot 5 | Screenshot 6 |
+|--------------|--------------|
+| ![Image](https://github.com/user-attachments/assets/96169cb7-8019-4aee-bbc0-44acbf3afc48) | ![Image](https://github.com/user-attachments/assets/eeefeaa4-d40c-403e-be94-6b580d82a7da) |
 ---
 
 ## 🚀 Features
@@ -19,6 +25,7 @@ A modern Android application built with **Jetpack Compose**, **MVVM**, and **Cle
 - 📴 Full offline support via Room database
 - 💡 Clean Architecture with UseCase & Repository layers
 - 🧪 Full test coverage: ViewModel, Repository, UseCases, DAO & UI tests
+- 🌙 This app supports full dark mode, including adaptive backgrounds and text colors!
 
 ## 🏛️ Clean Architecture
 
