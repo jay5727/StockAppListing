@@ -21,7 +21,7 @@ A modern Android application built with **Jetpack Compose**, **MVVM**, and **Cle
 ## 🚀 Test Case Coverage
 
 ✅ Includes complete **JUnit** & **Jetpack Compose UI tests** with full screen validation!  
-<img width="560" alt="Image" src="https://github.com/user-attachments/assets/0728ffe2-9558-4c0e-ae07-1794e452b390" />
+<img width="558" alt="Image" src="https://github.com/user-attachments/assets/3915a854-f08f-40e1-9413-8523d9a0c95e" />
 
 ![Image](https://github.com/user-attachments/assets/e86d50b8-623b-44bb-a8e1-de41e8b1f368)
 
