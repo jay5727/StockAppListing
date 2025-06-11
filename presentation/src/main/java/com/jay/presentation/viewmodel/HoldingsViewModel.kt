@@ -24,7 +24,7 @@ class HoldingsViewModel @Inject constructor(
     init {
         fetchHoldings()
     }
-
+    
     fun fetchHoldings() {
         _uiState.value = HoldingScreenUiState.Loading
         viewModelScope.launch {

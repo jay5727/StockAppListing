@@ -27,13 +27,13 @@ import com.jay.presentation.mapper.HoldingUIMapper
 import com.jay.presentation.R
 import com.jay.presentation.component.LoadingIndicator
 import com.jay.presentation.component.NoDataScreen
-import com.jay.presentation.component.ProfitLossBottomSheetInfoScreen
+import com.jay.presentation.component.ProfitLossBottomSheetInfo
 import com.jay.presentation.model.HoldingSummaryUI
 import com.jay.presentation.model.HoldingUIModel
 import com.jay.presentation.state.HoldingScreenUiState
 import com.jay.presentation.theme.LightGrey
 import com.jay.presentation.theme.PlasMid
-import com.jay.stockapp.holdingscreen.component.StockItem
+import com.jay.presentation.component.StockItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,7 +76,7 @@ fun HoldingScreen(
 @Composable
 fun HoldingBottomBar(bottomInfo: InvestmentInfo?) {
     bottomInfo?.let {
-        ProfitLossBottomSheetInfoScreen(
+        ProfitLossBottomSheetInfo(
             modifier = Modifier.background(color = LightGrey),
             detailInfo = bottomInfo
         )

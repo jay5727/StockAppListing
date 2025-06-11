@@ -26,52 +26,52 @@ class HoldingSummaryMapper {
     /**
      * Returns the total current value of the holdings
      */
-    private fun getCurrentValue(holdingList: List<Holding>) =
+    fun getCurrentValue(holdingList: List<Holding>) =
         holdingList.sumOf { getCurrentValue(it) }
 
     /**
      * Returns the total investment value of the holdings
      */
-    private fun getTotalInvestment(holdingList: List<Holding>) =
+    fun getTotalInvestment(holdingList: List<Holding>) =
         holdingList.sumOf { getInvestmentValue(it) }
 
     /**
      * Returns the individual stock current value of the holdings
      */
-    private fun getCurrentValue(holding: Holding) =
+    fun getCurrentValue(holding: Holding) =
         holding.ltp.orZero() * holding.quantity.orZero()
 
     /**
      * Returns the individual stock invested value of the holdings
      */
-    private fun getInvestmentValue(holding: Holding?) =
+    fun getInvestmentValue(holding: Holding?) =
         holding?.avgPrice?.orZero()?.times(holding.quantity.orZero()).orZero()
 
     /**
      * Returns the day pnl of all the holdings
      */
-    private fun getDayPnL(list: List<Holding>) = list.sumOf {
+    fun getDayPnL(list: List<Holding>) = list.sumOf {
         (it.close.orZero() - it.ltp.orZero()) * it.quantity.orZero()
     }
 
     /**
      * Returns the todays total pnl of all the holdings based on LTP-AvgPrice
      */
-    private fun getTodaysPnl(list: List<Holding>): Double {
+    fun getTodaysPnl(list: List<Holding>): Double {
         return list.sumOf { (it.ltp.orZero() - it.avgPrice.orZero()) * it.quantity.orZero() }
     }
 
     /**
      * Returns the closing pnl of all the holdings based on Close-AvgPrice
      */
-    private fun getClosingPnl(list: List<Holding>): Double {
+    fun getClosingPnl(list: List<Holding>): Double {
         return list.sumOf { (it.close.orZero() - it.avgPrice.orZero()) * it.quantity.orZero() }
     }
 
     /**
      * Returns the percentage change in pnl of all the holdings
      */
-    private fun getPercentageChange(list: List<Holding>): Double {
+    fun getPercentageChange(list: List<Holding>): Double {
         val totalPnlClose = getClosingPnl(list)
         val totalPnlToday = getTodaysPnl(list)
         val percentageChange = if (totalPnlClose != 0.0) {

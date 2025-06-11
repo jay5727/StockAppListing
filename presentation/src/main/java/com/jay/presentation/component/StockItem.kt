@@ -1,4 +1,4 @@
-package com.jay.stockapp.holdingscreen.component
+package com.jay.presentation.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +20,6 @@ import com.jay.domain.model.Holding
 import com.jay.domain.util.StringConstants.LTP
 import com.jay.domain.util.StringConstants.NET_QTY
 import com.jay.domain.util.StringConstants.PL
-import com.jay.presentation.component.ColorComposable
 import com.jay.presentation.model.HoldingUIModel
 
 @Composable

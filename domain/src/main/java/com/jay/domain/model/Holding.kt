@@ -10,5 +10,5 @@ data class Holding(
 
 data class HoldingSummary(
     val holdingsList: List<Holding>,
-    val investmentInfo: InvestmentInfo?=null
+    val investmentInfo: InvestmentInfo? = null
 )
