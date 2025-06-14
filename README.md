@@ -18,15 +18,15 @@ A modern Android application built with **Jetpack Compose**, **MVVM**, and **Cle
 | ![Image](https://github.com/user-attachments/assets/96169cb7-8019-4aee-bbc0-44acbf3afc48) | ![Image](https://github.com/user-attachments/assets/eeefeaa4-d40c-403e-be94-6b580d82a7da) |
 ---
 
-## 🚀 Test Case Coverage
+# 🚀 Test Case Coverage
 
 ✅ Includes complete **JUnit** & **Jetpack Compose UI tests** with full screen validation!  
 <img width="558" alt="Image" src="https://github.com/user-attachments/assets/3915a854-f08f-40e1-9413-8523d9a0c95e" />
 
 ![Image](https://github.com/user-attachments/assets/e86d50b8-623b-44bb-a8e1-de41e8b1f368)
 
-
-## 🚀 Features
+---
+# 🚀 Features
 
 - 📊 Holdings list with LTP and P&L display
 - 📉 Expandable Profit & Loss bottom sheet
@@ -35,7 +35,8 @@ A modern Android application built with **Jetpack Compose**, **MVVM**, and **Cle
 - 🧪 Full test coverage: ViewModel, Repository, UseCases, DAO & UI tests
 - 🌙 This app supports full dark mode, including adaptive backgrounds and text colors!
 
-## 🏛️ Clean Architecture
+---
+#  🏛️ Clean Architecture
 
 The app follows Clean Architecture principles to ensure separation of concerns, maintainability, and testability.
 
@@ -45,8 +46,9 @@ The app follows Clean Architecture principles to ensure separation of concerns, 
 2. **Domain Layer**: Contains business logic, including use cases and domain models.  
 3. **Data Layer**: Manages data sources (API and local database) and handles data operations.
 
+---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
 | Layer         | Libraries / Tools Used                     |
 |--------------|---------------------------------------------|
@@ -59,7 +61,7 @@ The app follows Clean Architecture principles to ensure separation of concerns, 
 
 ---
 
-## 🧱 App Architecture
+# 🧱 App Architecture
 
 ```text
 com.jay.stocklistingapp
