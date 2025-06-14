@@ -2,16 +2,15 @@ package com.jay.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -27,17 +26,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jay.domain.model.Holding
 import com.jay.domain.model.InvestmentInfo
-import com.jay.presentation.mapper.HoldingUIMapper
 import com.jay.presentation.R
 import com.jay.presentation.component.LoadingIndicator
 import com.jay.presentation.component.NoDataScreen
 import com.jay.presentation.component.ProfitLossBottomSheetInfo
+import com.jay.presentation.component.StockItem
+import com.jay.presentation.mapper.HoldingUIMapper
 import com.jay.presentation.model.HoldingSummaryUI
 import com.jay.presentation.model.HoldingUIModel
 import com.jay.presentation.state.HoldingScreenUiState
-import com.jay.presentation.theme.LightGrey
 import com.jay.presentation.theme.PlasMid
-import com.jay.presentation.component.StockItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,8 +58,7 @@ fun HoldingScreen(
         bottomBar = {
             (screenState as? HoldingScreenUiState.Success)
                 ?.summary
-                ?.investmentInfo
-                ?.let { HoldingBottomBar(it) }
+                ?.let { HoldingBottomBar(it.investmentInfo) }
 
         },
         content = { paddingValues ->
@@ -71,8 +68,11 @@ fun HoldingScreen(
                     items = screenState.summary.holdingList,
                     paddingValues = paddingValues
                 )
-
-                is HoldingScreenUiState.Error -> NoDataScreen(paddingValues, onRefresh)
+                is HoldingScreenUiState.Error -> NoDataScreen(
+                    message = screenState.message,
+                    paddingValues = paddingValues,
+                    onRefresh = onRefresh
+                )
             }
         })
 }
@@ -112,12 +112,7 @@ fun HoldingList(items: List<HoldingUIModel>, paddingValues: PaddingValues) {
                     uiModel = item
                 )
                 if (index != items.lastIndex)
-                    Spacer(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(1.dp)
-                            .background(Color.Gray)
-                    )
+                    HorizontalDivider(modifier = Modifier.background(color = Color.Gray))
             }
         }
 
@@ -131,16 +126,16 @@ fun PreviewHoldingScreen() {
         screenState = HoldingScreenUiState.Success(
             summary = HoldingSummaryUI(
                 holdingList = HoldingUIMapper().toUIModelList(sampleHoldings),
-                investmentInfo = InvestmentInfo().apply {
-                    this.currentValue = 2979507.0
-                    this.totalInvestment = 2906545.95
-                    this.todaysPNL = -31841.15
-                    this.totalPNL = 72961.05
-                    this.percentageChange = 77.44
-                }
+                investmentInfo = InvestmentInfo(
+                    currentValue = 2979507.0,
+                    totalInvestment = 2906545.95,
+                    todaysPNL = -31841.15,
+                    totalPNL = 72961.05,
+                    percentageChange = 77.44
+                )
             )
         ),
-        onRefresh = {},
+        onRefresh = {}
     )
 }
 

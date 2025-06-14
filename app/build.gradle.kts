@@ -19,14 +19,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    android.buildFeatures.buildConfig =  true
-
     buildTypes {
 
-        val url = "\"https://35dee773a9ec441e9f38d5fc249406ce.api.mockbin.io/\""
-        debug {
-            buildConfigField("String", "BASE_URL", url)
-        }
         release {
             isMinifyEnabled = false
             proguardFiles(

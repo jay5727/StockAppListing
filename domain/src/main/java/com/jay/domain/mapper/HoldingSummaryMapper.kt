@@ -69,11 +69,12 @@ class HoldingSummaryMapper {
     }
 
     /**
+     * NOT mentioned in doc although
      * Returns the percentage change in pnl of all the holdings
      */
     fun getPercentageChange(list: List<Holding>): Double {
-        val totalPnlClose = getClosingPnl(list)
         val totalPnlToday = getTodaysPnl(list)
+        val totalPnlClose = getClosingPnl(list)
         val percentageChange = if (totalPnlClose != 0.0) {
             ((totalPnlToday - totalPnlClose) / totalPnlClose) * 100
         } else {

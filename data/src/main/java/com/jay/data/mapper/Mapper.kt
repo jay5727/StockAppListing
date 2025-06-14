@@ -4,6 +4,7 @@ import com.jay.data.database.HoldingEntity
 import com.jay.data.network.model.HoldingDto
 import com.jay.domain.model.Holding
 
+//DTO -> Domain
 fun HoldingDto.toDomain(): Holding = Holding(
     symbol = this.symbol,
     quantity = this.quantity,
@@ -12,6 +13,7 @@ fun HoldingDto.toDomain(): Holding = Holding(
     close = this.close
 )
 
+//Domain -> DB Entity
 fun Holding.toEntity(): HoldingEntity = HoldingEntity(
     symbol = this.symbol,
     quantity = this.quantity,
@@ -20,6 +22,7 @@ fun Holding.toEntity(): HoldingEntity = HoldingEntity(
     close = this.close
 )
 
+//DB Entity -> Domain
 fun HoldingEntity.toDomain(): Holding = Holding(
     symbol = this.symbol,
     quantity = this.quantity,

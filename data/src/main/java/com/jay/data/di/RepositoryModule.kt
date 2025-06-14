@@ -1,5 +1,6 @@
-package com.jay.stockapplisting.di
+package com.jay.data.di
 
+import com.jay.data.network.HoldingApiService
 import com.jay.data.repository.HoldingsRepositoryImpl
 import com.jay.domain.repository.HoldingsRepository
 import dagger.Binds

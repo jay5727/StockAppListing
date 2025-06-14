@@ -1,8 +1,8 @@
-package com.jay.stockapplisting.di
+package com.jay.data.di
 
 import com.google.gson.GsonBuilder
+import com.jay.data.BuildConfig
 import com.jay.data.network.HoldingApiService
-import com.jay.stockapplisting.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

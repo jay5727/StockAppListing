@@ -1,5 +1,6 @@
 package com.jay.presentation.component
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,9 +33,10 @@ fun InvestmentDetails(
     shouldShowIcon: Boolean = false,
     onPnLClicked: () -> Unit = {}
 ) {
-    var rotateIcon by remember {
-        mutableFloatStateOf(0F)
-    }
+//    var rotateIcon by remember {
+//        mutableFloatStateOf(0F)
+//    }
+    val rotateIcon by animateFloatAsState(targetValue = if (shouldShowIcon) 180f else 0f)
     Row(
         modifier = modifier,
         verticalAlignment = CenterVertically
@@ -46,7 +48,7 @@ fun InvestmentDetails(
                     .size(24.dp)
                     .graphicsLayer(rotationZ = rotateIcon)
                     .clickable {
-                        rotateIcon = if (rotateIcon == 0F) 180F else 0F
+                        //rotateIcon = if (rotateIcon == 0F) 180F else 0F
                         onPnLClicked()
                     },
                 imageVector = Icons.Rounded.KeyboardArrowDown, contentDescription = ""

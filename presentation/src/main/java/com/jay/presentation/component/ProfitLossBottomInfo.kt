@@ -8,17 +8,15 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,7 +27,6 @@ import com.jay.domain.util.StringConstants.TodaysPL
 import com.jay.domain.util.StringConstants.TotalInvestment
 import com.jay.domain.util.getFormattedString
 import com.jay.presentation.model.InvestmentDataItem
-import com.jay.presentation.theme.LightGrey
 
 @Composable
 fun ProfitLossBottomSheetInfo(
@@ -69,19 +66,16 @@ fun ProfitLossBottomSheetInfo(
             exit = fadeOut(animationSpec = tween(durationMillis = 300)) + shrinkVertically()
         ) {
             Column {
-                list.dropLast(1).forEach { it ->
+                list.dropLast(1).forEachIndexed { index, it ->
                     InvestmentDetails(
                         modifier = Modifier.padding(8.dp),
                         item = it
                     )
+                    if (index == list.dropLast(1).lastIndex) {
+                        HorizontalDivider(modifier = Modifier.padding(horizontal = 8.dp))
+                    }
                 }
-                Spacer(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+
             }
         }
 
@@ -90,9 +84,8 @@ fun ProfitLossBottomSheetInfo(
             modifier = Modifier.padding(8.dp),
             item = list.last(),
             shouldShowIcon = true,
-        ) {
-            showInfoSheet = !showInfoSheet
-        }
+            onPnLClicked = { showInfoSheet = !showInfoSheet }
+        )
     }
 }
 
@@ -100,13 +93,13 @@ fun ProfitLossBottomSheetInfo(
 @Composable
 private fun ProfitLossBottomSheetInfoScreenPreview() {
     ProfitLossBottomSheetInfo(
-        modifier = Modifier.background(color = LightGrey),
-        detailInfo = InvestmentInfo().apply {
-            this.currentValue = 2979507.0
-            this.totalInvestment = 2906545.95
-            this.todaysPNL = 31841.15
-            this.totalPNL = 72961.05
-            this.percentageChange = 77.44
-        }
+        modifier = Modifier.background(color = MaterialTheme.colorScheme.surface),
+        detailInfo = InvestmentInfo(
+            currentValue = 2979507.0,
+            totalInvestment = 2906545.95,
+            todaysPNL = -31841.15,
+            totalPNL = 72961.05,
+            percentageChange = 77.44
+        )
     )
 }

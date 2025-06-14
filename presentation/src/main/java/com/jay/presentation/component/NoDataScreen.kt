@@ -13,10 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NoDataScreen(paddingValues: PaddingValues, onRefresh: () -> Unit) {
+fun NoDataScreen(
+    message: String? = null,
+    paddingValues: PaddingValues,
+    onRefresh: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -24,11 +29,19 @@ fun NoDataScreen(paddingValues: PaddingValues, onRefresh: () -> Unit) {
         contentAlignment = Center
     ) {
         Column(horizontalAlignment = CenterHorizontally) {
-            Text(text = "No data available")
+            Text(text = message ?: "No data available")
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = onRefresh) {
                 Text(text = "Refresh")
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun NoDataScreenPreview() {
+    NoDataScreen(
+        paddingValues = PaddingValues(), onRefresh = {}
+    )
 }

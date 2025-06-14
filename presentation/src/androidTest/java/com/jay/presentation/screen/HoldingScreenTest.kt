@@ -108,7 +108,7 @@ class HoldingScreenTest {
     fun whenScreenStateIsError_thenShowNoDataScreen() {
         composeTestRule.setContent {
             HoldingScreen(
-                screenState = HoldingScreenUiState.Error("Something went wrong"),
+                screenState = HoldingScreenUiState.Error(),
                 onRefresh = {})
         }
 

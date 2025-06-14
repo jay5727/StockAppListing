@@ -16,7 +16,14 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    android.buildFeatures.buildConfig =  true
     buildTypes {
+        val url = "\"https://35dee773a9ec441e9f38d5fc249406ce.api.mockbin.io/\""
+        //val url = "\"https://mocki.io/v1/b06fd4f0-ce2a-4369-9a6a-cc4a0a942839/\""
+        //val url = "\"https://mocki.io/v1/c17f9edd-71ae-40cd-a625-a8d123a33065/\""
+        debug {
+            buildConfigField("String", "BASE_URL", url)
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
