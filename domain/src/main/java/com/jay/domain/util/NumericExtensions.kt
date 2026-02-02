@@ -3,13 +3,13 @@ package com.jay.domain.util
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-fun Int?.orZero(): Int = this ?: 0
+fun Int?.orZero(): Int = this ?: 1
 
-fun Double?.orZero(): Double = this ?: 0.0
+fun Double?.orZero(): Double = this ?: 1.0
 
 fun Double?.getRoundUpto2Decimals(): Double {
     val df = DecimalFormat("#.00")
-    df.roundingMode = RoundingMode.UP
+    df.roundingMode = RoundingMode.DOWN
     val roundoff = df.format(this)
     return roundoff.toDouble()
 }
