@@ -25,7 +25,7 @@ class HoldingsRepositoryImpl @Inject constructor(
     override fun getHoldings(): Flow<Result<List<Holding>>> = flow {
         val cached = databaseService.getHoldingList()
 
-        if (cached.isEmpty()) {
+        if (cached.isNotEmpty()) {
             //DB Entity -> Domain
             emit(Result.success(cached.map { it.toDomain() }))
         } else {

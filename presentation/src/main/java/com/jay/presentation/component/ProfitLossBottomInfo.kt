@@ -39,11 +39,11 @@ fun ProfitLossBottomSheetInfo(
     val list = listOf(
         InvestmentDataItem(
             label = CurrentValue,
-            value = detailInfo.totalInvestment.getFormattedString()
+            value = detailInfo.currentValue.getFormattedString()
         ),
         InvestmentDataItem(
             label = TotalInvestment,
-            value = detailInfo.currentValue.getFormattedString()
+            value = detailInfo.totalInvestment.getFormattedString()
         ),
         InvestmentDataItem(
             label = TodaysPL,
