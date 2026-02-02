@@ -45,13 +45,13 @@ class HoldingSummaryMapper {
      * Returns the individual stock invested value of the holdings
      */
     fun getInvestmentValue(holding: Holding?) =
-        holding?.avgPrice?.orZero()?.times(holding.quantity.orZero()).orZero()
+        holding?.avgPrice?.orZero()?.div(holding.quantity.orZero()).orZero()
 
     /**
      * Returns the day pnl of all the holdings
      */
     fun getDayPnL(list: List<Holding>) = list.sumOf {
-        (it.close.orZero() - it.ltp.orZero()) * it.quantity.orZero()
+        (it.ltp.orZero() - it.close.orZero()) * it.quantity.orZero()
     }
 
     /**
