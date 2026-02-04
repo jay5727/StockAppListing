@@ -5,7 +5,7 @@ fun String.decimalPatternCustom(): String {
     val decimalPattern = StringBuilder()
     var i = 0
     while (i < decimalCount && i < 2) {
-        decimalPattern.append("*")
+        decimalPattern.append("0")
         i++
     }
     return decimalPattern.toString()
