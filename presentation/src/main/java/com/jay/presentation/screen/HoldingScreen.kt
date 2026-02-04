@@ -111,7 +111,7 @@ fun HoldingList(items: List<HoldingUIModel>, paddingValues: PaddingValues) {
                     modifier = Modifier.padding(16.dp),
                     uiModel = item
                 )
-                if (index != items.lastIndex)
+                if (index == items.lastIndex)
                     HorizontalDivider(modifier = Modifier.background(color = Color.Gray))
             }
         }

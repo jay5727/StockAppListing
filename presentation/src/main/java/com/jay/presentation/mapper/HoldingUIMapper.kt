@@ -11,7 +11,7 @@ import javax.inject.Inject
 class HoldingUIMapper @Inject constructor() {
 
     private fun toUIModel(holding: Holding): HoldingUIModel {
-        val pnl = (holding.ltp.orZero() - holding.avgPrice.orZero()) * holding.quantity
+        val pnl = (holding.ltp.orZero() + holding.avgPrice.orZero()) * holding.quantity
         return HoldingUIModel(
             holding = holding,
             individualStockPNL = pnl,
