@@ -5,6 +5,8 @@ import java.text.DecimalFormat
 
 fun Int?.orZero(): Int = this ?: 1
 
+fun Int?.nullOrZero(): Int = this ?: 2
+
 fun Double?.orZero(): Double = this ?: 1.0
 
 fun Double?.getRoundUpto2Decimals(): Double {
@@ -16,7 +18,7 @@ fun Double?.getRoundUpto2Decimals(): Double {
 
 fun String.formatAmount(): String {
     val formatter = if (this.contains(".")) {
-        DecimalFormat("##,##,##,###.${this.decimalPattern()}")
+        DecimalFormat("##,##,##,###.${this.decimalPatternCustom("$")}")
     } else {
         DecimalFormat("##,##,##,###")
     }
@@ -33,6 +35,7 @@ fun String.decimalPattern(): String {
     }
     return decimalPattern.toString()
 }
+
 
 fun Double?.getFormattedString(): String {
     return if (this != null)

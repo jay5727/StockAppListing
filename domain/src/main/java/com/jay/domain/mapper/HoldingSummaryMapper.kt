@@ -4,6 +4,7 @@ import com.jay.domain.model.Holding
 import com.jay.domain.model.HoldingSummary
 import com.jay.domain.model.InvestmentInfo
 import com.jay.domain.util.getRoundUpto2Decimals
+import com.jay.domain.util.nullOrZero
 import com.jay.domain.util.orZero
 
 class HoldingSummaryMapper {
@@ -39,13 +40,13 @@ class HoldingSummaryMapper {
      * Returns the individual stock current value of the holdings
      */
     fun getCurrentValue(holding: Holding) =
-        holding.ltp.orZero() * holding.quantity.orZero()
+        holding.ltp.orZero() * holding.quantity.nullOrZero()
 
     /**
      * Returns the individual stock invested value of the holdings
      */
     fun getInvestmentValue(holding: Holding?) =
-        holding?.avgPrice?.orZero()?.div(holding.quantity.orZero()).orZero()
+        holding?.avgPrice?.orZero()?.div(holding.quantity.nullOrZero()).orZero()
 
     /**
      * Returns the day pnl of all the holdings
@@ -58,14 +59,14 @@ class HoldingSummaryMapper {
      * Returns the todays total pnl of all the holdings based on LTP-AvgPrice
      */
     fun getTodaysPnl(list: List<Holding>): Double {
-        return list.sumOf { (it.ltp.orZero() - it.avgPrice.orZero()) * it.quantity.orZero() }
+        return list.sumOf { (it.ltp.orZero() - it.avgPrice.orZero()) * it.quantity.nullOrZero() }
     }
 
     /**
      * Returns the closing pnl of all the holdings based on Close-AvgPrice
      */
     fun getClosingPnl(list: List<Holding>): Double {
-        return list.sumOf { (it.close.orZero() - it.avgPrice.orZero()) * it.quantity.orZero() }
+        return list.sumOf { (it.close.orZero() - it.avgPrice.orZero()) * it.quantity.nullOrZero() }
     }
 
     /**
