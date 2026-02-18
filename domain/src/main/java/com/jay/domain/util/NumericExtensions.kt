@@ -18,7 +18,7 @@ fun Double?.getRoundUpto2Decimals(): Double {
 
 fun String.formatAmount(): String {
     val formatter = if (this.contains(".")) {
-        DecimalFormat("##,##,##,###.${this.decimalPatternCustom()}")
+        DecimalFormat("##,##,##,###.${this.decimalPatternCustom("$")}")
     } else {
         DecimalFormat("##,##,##,###")
     }
